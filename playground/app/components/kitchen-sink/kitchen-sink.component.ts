@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
-import { AclAccesses, FsAcl } from '@firestitch/acl';
-
-import { Permission } from '../enums/permission';
+import { Component } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 
 @Component({
@@ -10,19 +7,24 @@ import { Permission } from '../enums/permission';
   templateUrl: 'kitchen-sink.component.html',
   styleUrls: ['kitchen-sink.component.scss'],
 })
-export class KitchenSinkComponent implements OnInit {
+export class KitchenSinkComponent {
 
-  public Permission = Permission;
-  public Accesses = AclAccesses;
-  public validProject = { id: 555 };
-  public invalidProject = { id: 999 };
+  public email;
 
-  public constructor(
-    private _acl: FsAcl,
-  ) {}
+  public requestCode = (email: string): Observable<any> => {
+    return of(true);
+  };
 
-  public ngOnInit(): void {
-    
+  public verifyCode = (code: string): Observable<any> => {
+    return of(true);
+  };
+
+  public savePassword = (code: string, password: string): Observable<any> => {
+    return of(true);
+  };
+
+  public log(message): void {
+    console.log(message);
   }
 
 }

@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FsExampleModule } from '@firestitch/example';
 import { FsMessageModule } from '@firestitch/message';
-import { FsAclModule } from '@firestitch/acl';
 import { FsLabelModule } from '@firestitch/label';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -17,8 +16,7 @@ import {
 } from './components';
 import { AppComponent } from './app.component';
 import { KitchenSinkConfigureComponent } from './components/kitchen-sink-configure';
-import { ConfigurationComponent } from './components/configuration';
-import { AttributeComponent } from './components/attribute';
+import { FsForgotPasswordModule } from '@firestitch/forgot-password';
 
 const routes: Routes = [
   { path: '', component: ExamplesComponent },
@@ -28,7 +26,7 @@ const routes: Routes = [
   bootstrap: [ AppComponent ],
   imports: [
     BrowserModule,
-    FsAclModule,
+    FsForgotPasswordModule,
     BrowserAnimationsModule,
     AppMaterialModule,
     FormsModule,
@@ -46,8 +44,6 @@ const routes: Routes = [
     ExamplesComponent,
     KitchenSinkComponent,
     KitchenSinkConfigureComponent,
-    ConfigurationComponent,
-    AttributeComponent
   ],
 })
 export class PlaygroundModule {
