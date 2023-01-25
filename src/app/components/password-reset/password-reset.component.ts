@@ -11,12 +11,12 @@ import { catchError, tap } from 'rxjs/operators';
 
 
 @Component({
-  selector: 'fs-forgot-password',
-  templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss'],
+  selector: 'fs-password-reset',
+  templateUrl: './password-reset.component.html',
+  styleUrls: ['./password-reset.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ForgotPasswordComponent implements OnInit {
+export class PasswordResetComponent implements OnInit {
 
   @Input() public email: string = null;
   @Input() public requestCode: (email: string) => Observable<any>;
@@ -38,7 +38,7 @@ export class ForgotPasswordComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.titleChange.emit('Forgot Password');
+    this.titleChange.emit('Password Reset');
   }
 
   public cancel(): void {

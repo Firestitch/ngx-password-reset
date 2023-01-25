@@ -16,7 +16,7 @@ import {
 } from './components';
 import { AppComponent } from './app.component';
 import { KitchenSinkConfigureComponent } from './components/kitchen-sink-configure';
-import { FsForgotPasswordModule } from '@firestitch/forgot-password';
+import { FsPasswordResetModule } from '@firestitch/password-reset';
 
 const routes: Routes = [
   { path: '', component: ExamplesComponent },
@@ -26,7 +26,7 @@ const routes: Routes = [
   bootstrap: [ AppComponent ],
   imports: [
     BrowserModule,
-    FsForgotPasswordModule,
+    FsPasswordResetModule,
     BrowserAnimationsModule,
     AppMaterialModule,
     FormsModule,

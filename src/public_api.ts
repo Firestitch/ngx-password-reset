@@ -1,3 +1,3 @@
-export { FsForgotPasswordModule } from './app/fs-forgot-password.module';
+export { FsPasswordResetModule } from './app/fs-password-reset.module';
 
-export { ForgotPasswordComponent } from './app/components/forgot-password/forgot-password.component';
+export { PasswordResetComponent } from './app/components/password-reset/password-reset.component';

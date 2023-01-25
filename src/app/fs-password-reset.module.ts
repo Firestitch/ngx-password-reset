@@ -11,7 +11,7 @@ import { FsCodeModule } from '@firestitch/code';
 import { FsLabelModule } from '@firestitch/label';
 import { FsCommonModule } from '@firestitch/common';
 
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 import { StackedButtonsComponent } from './components/stacked-buttons/stacked-buttons.component';
 
 
@@ -30,12 +30,12 @@ import { StackedButtonsComponent } from './components/stacked-buttons/stacked-bu
     FsCommonModule,
   ],
   declarations: [
-    ForgotPasswordComponent,
+    PasswordResetComponent,
     StackedButtonsComponent
   ],
   exports: [
-    ForgotPasswordComponent,
+    PasswordResetComponent,
   ],
 })
-export class FsForgotPasswordModule {
+export class FsPasswordResetModule {
 }
