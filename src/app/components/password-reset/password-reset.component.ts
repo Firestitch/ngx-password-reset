@@ -25,7 +25,7 @@ export class PasswordResetComponent implements OnInit {
 
   @Output() public titleChange = new EventEmitter<string>();
   @Output() public cancelled = new EventEmitter();
-  @Output() public completed = new EventEmitter<string>();
+  @Output() public completed = new EventEmitter<{ email: string, password: string, code: string }>();
 
   public password: string = null;
   public confirmPassword: string = null;
@@ -98,7 +98,7 @@ export class PasswordResetComponent implements OnInit {
       .pipe(
         tap(() => {
           this._message.success('Your password has been successfully changed');
-          this.completed.emit(this.email);
+          this.completed.emit({ email: this.email, password: this.password, code: this.code });
         }),
       );
   }

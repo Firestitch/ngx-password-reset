@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { FsPasswordModule } from '@firestitch/password';
 import { FsFormModule } from '@firestitch/form';
-import { FsCodeModule } from '@firestitch/code';
+import { FsCodeInputModule } from '@firestitch/code-input';
 import { FsLabelModule } from '@firestitch/label';
 import { FsCommonModule } from '@firestitch/common';
 
@@ -25,7 +25,7 @@ import { StackedButtonsComponent } from './components/stacked-buttons/stacked-bu
 
     FsFormModule,
     FsPasswordModule,
-    FsCodeModule,
+    FsCodeInputModule,
     FsLabelModule,
     FsCommonModule,
   ],
