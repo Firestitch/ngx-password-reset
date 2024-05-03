@@ -50,7 +50,7 @@ export class PasswordResetComponent implements OnInit {
       return this._verifyCode(control.value)
         .pipe(
           catchError(() => {
-            return throwError('Unable to verify code');
+            return throwError('Invalid code');
           }),
         );
     }
