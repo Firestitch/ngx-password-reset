@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import { Observable, of } from 'rxjs';
 
 
 @Component({
   selector: 'kitchen-sink',
-  templateUrl: 'kitchen-sink.component.html',
-  styleUrls: ['kitchen-sink.component.scss'],
+  templateUrl: './kitchen-sink.component.html',
+  styleUrls: ['./kitchen-sink.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KitchenSinkComponent {
 
