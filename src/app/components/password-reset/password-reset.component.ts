@@ -26,6 +26,7 @@ export class PasswordResetComponent implements OnInit {
   public emailExists: (email: string) => Observable<boolean>;
 
   @Output() public titleChange = new EventEmitter<string>();
+  @Output() public subtitleChange = new EventEmitter<string>();
   @Output() public cancelled = new EventEmitter();
   @Output() public completed = new EventEmitter<{ email: string, password: string, code: string }>();
 
@@ -41,6 +42,7 @@ export class PasswordResetComponent implements OnInit {
 
   public ngOnInit(): void {
     this.titleChange.emit('Reset your password');
+    this.subtitleChange.emit('Enter the email address associated with your account.');
   }
 
   public emailExistsValidator = (control: FormControl): Observable<any> => {
@@ -81,6 +83,7 @@ export class PasswordResetComponent implements OnInit {
     if (this.mode === 'code') {
       this.mode = 'password';
       this.titleChange.emit('Set-up new password');
+      this.subtitleChange.emit('Create a new and strong password for your account.');
       this._cdRef.markForCheck();
 
       return of(true);
@@ -97,7 +100,8 @@ export class PasswordResetComponent implements OnInit {
     return this.requestCode(this.email)
       .pipe(
         tap(() => {
-          this.titleChange.emit('Let’s verify it’s you');
+          this.titleChange.emit('Let\'s verify it\'s you');
+          this.subtitleChange.emit(`An email with a verification code has been sent to ${this.email} to verify it's you.`);
           this.mode = 'code';
           this._cdRef.markForCheck();
         }),

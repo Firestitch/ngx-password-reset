@@ -1,9 +1,14 @@
+<h1>
+  {{title}}
+  <div class="subtitle">{{subtitle}}</div>
+</h1>
 <fs-password-reset
   [email]="email"
   [requestCode]="requestCode"
   [verifyCode]="verifyCode"
   [savePassword]="savePassword"
-  (titleChange)="log('titleChange')"
+  (titleChange)="title=$event"
+  (subtitleChange)="subtitle=$event"
   (cancelled)="log('cancelled')"
   (completed)="log('completed')">
 </fs-password-reset>

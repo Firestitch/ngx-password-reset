@@ -12,6 +12,8 @@ import { Observable, of } from 'rxjs';
 export class KitchenSinkComponent {
 
   public email;
+  public title;
+  public subtitle;
 
   public requestCode = (email: string): Observable<any> => {
     return of(true);
