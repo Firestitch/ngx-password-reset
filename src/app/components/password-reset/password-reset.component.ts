@@ -40,7 +40,7 @@ export class PasswordResetComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.titleChange.emit('Password Reset');
+    this.titleChange.emit('Reset your password');
   }
 
   public emailExistsValidator = (control: FormControl): Observable<any> => {
@@ -80,7 +80,7 @@ export class PasswordResetComponent implements OnInit {
 
     if (this.mode === 'code') {
       this.mode = 'password';
-      this.titleChange.emit('Change Password');
+      this.titleChange.emit('Set-up new password');
       this._cdRef.markForCheck();
 
       return of(true);
@@ -97,7 +97,7 @@ export class PasswordResetComponent implements OnInit {
     return this.requestCode(this.email)
       .pipe(
         tap(() => {
-          this.titleChange.emit('Verification');
+          this.titleChange.emit('Let’s verify it’s you');
           this.mode = 'code';
           this._cdRef.markForCheck();
         }),
