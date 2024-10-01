@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy, ChangeDetectorRef,
   Component, EventEmitter, Input, OnInit, Output,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 import { FsMessage } from '@firestitch/message';
 
@@ -45,7 +45,7 @@ export class PasswordResetComponent implements OnInit {
     this.subtitleChange.emit('Enter the email address associated with your account.');
   }
 
-  public emailExistsValidator = (control: FormControl): Observable<any> => {
+  public emailExistsValidator = (control: UntypedFormControl): Observable<any> => {
     if (control.value && this.emailExists) {
       return this.emailExists(control.value)
         .pipe(
@@ -62,7 +62,7 @@ export class PasswordResetComponent implements OnInit {
     this.cancelled.emit();
   }
 
-  public validateExists = (control: FormControl): Observable<any> => {
+  public validateExists = (control: UntypedFormControl): Observable<any> => {
     if (control.value) {
       return this._verifyCode(control.value)
         .pipe(
