@@ -7,7 +7,7 @@ import { UntypedFormControl } from '@angular/forms';
 import { FsMessage } from '@firestitch/message';
 
 import { Observable, of, throwError } from 'rxjs';
-import { catchError, switchMap, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 
 @Component({
@@ -22,8 +22,6 @@ export class PasswordResetComponent implements OnInit {
   @Input() public requestCode: (email: string) => Observable<any>;
   @Input() public verifyCode: (code: string) => Observable<any>;
   @Input() public savePassword: (code: string, password: string) => Observable<any>;
-  @Input()
-  public emailExists: (email: string) => Observable<boolean>;
 
   @Output() public titleChange = new EventEmitter<string>();
   @Output() public subtitleChange = new EventEmitter<string>();
@@ -44,19 +42,6 @@ export class PasswordResetComponent implements OnInit {
     this.titleChange.emit('Reset your password');
     this.subtitleChange.emit('Enter the email address associated with your account.');
   }
-
-  public emailExistsValidator = (control: UntypedFormControl): Observable<any> => {
-    if (control.value && this.emailExists) {
-      return this.emailExists(control.value)
-        .pipe(
-          switchMap((exists) => {
-            return exists ? of(true) : throwError('Could not find your account');
-          }),
-        );
-    }
-
-    return of(true);
-  };
 
   public cancel(): void {
     this.cancelled.emit();
