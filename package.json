@@ -2,7 +2,7 @@
   "name": "@firestitch/password-reset",
   "title": "Password Reset",
   "description": "",
-  "version": "18.0.6",
+  "version": "18.0.7",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/ngx-password-reset"
@@ -61,7 +61,7 @@
     "@firestitch/lint": "^18.0.17",
     "@firestitch/menu": "^18.0.5",
     "@firestitch/message": "^18.0.0",
-    "@firestitch/password": "^18.0.2",
+    "@firestitch/password": "^18.0.3",
     "@firestitch/popover": "^18.0.0",
     "@firestitch/prompt": "^18.0.4",
     "@firestitch/scroll-picker": "^18.0.0",
