@@ -5,7 +5,7 @@ import { FsApi } from '@firestitch/api';
 import { FsMessage } from '@firestitch/message';
 import { IFsPasswordConfig } from '@firestitch/password';
 
-import { tap } from 'rxjs/operators';
+import { finalize, tap } from 'rxjs/operators';
 
 
 @Component({
@@ -47,7 +47,14 @@ export class ForcePasswordChangeComponent implements OnInit {
   };
 
   public cancel() {
-    this._router.navigateByUrl('/signin');
+    this._api
+      .post('auth/signout')
+      .pipe(
+        finalize(() => {
+          this._router.navigateByUrl('/signin');
+        }),
+      )
+      .subscribe();
   }
 
 }
