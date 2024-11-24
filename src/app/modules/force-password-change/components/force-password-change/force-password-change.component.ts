@@ -34,7 +34,7 @@ export class ForcePasswordChangeComponent implements OnInit {
 
   public save = () => {
     return this._api
-      .post('accounts/password/change/force"', {
+      .post('accounts/password/change/force', {
         password: this.password,
       })
       .pipe(
