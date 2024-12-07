@@ -67,13 +67,13 @@ export class PasswordResetComponent implements OnInit {
 
   public submit = () => {
     if (this.mode === 'request') {
-      this.form.clear();
+      this.form.reset();
 
       return this._requestCode();
     }
 
     if (this.mode === 'code') {
-      this.form.clear();
+      this.form.reset();
 
       this.mode = 'password';
       this.titleChange.emit('Set-up new password');
@@ -84,7 +84,7 @@ export class PasswordResetComponent implements OnInit {
     }
 
     if (this.mode === 'password') {
-      this.form.clear();
+      this.form.reset();
 
       return this._savePassword();
     }
