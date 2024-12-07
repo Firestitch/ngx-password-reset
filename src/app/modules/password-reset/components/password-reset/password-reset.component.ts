@@ -1,9 +1,11 @@
 import {
   ChangeDetectionStrategy, ChangeDetectorRef,
   Component, EventEmitter, Input, OnInit, Output,
+  ViewChild,
 } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 
+import { FsFormDirective } from '@firestitch/form';
 import { FsMessage } from '@firestitch/message';
 
 import { Observable, of, throwError } from 'rxjs';
@@ -17,6 +19,9 @@ import { catchError, tap } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PasswordResetComponent implements OnInit {
+
+  @ViewChild(FsFormDirective)
+  public form: FsFormDirective;
 
   @Input() public email: string = null;
   @Input() public requestCode: (email: string) => Observable<any>;
@@ -62,10 +67,14 @@ export class PasswordResetComponent implements OnInit {
 
   public submit = () => {
     if (this.mode === 'request') {
+      this.form.clear();
+
       return this._requestCode();
     }
 
     if (this.mode === 'code') {
+      this.form.clear();
+
       this.mode = 'password';
       this.titleChange.emit('Set-up new password');
       this.subtitleChange.emit('Create a new and strong password for your account.');
@@ -75,10 +84,12 @@ export class PasswordResetComponent implements OnInit {
     }
 
     if (this.mode === 'password') {
+      this.form.clear();
+
       return this._savePassword();
     }
 
-    return throwError('Invalid action');
+    return throwError(() => new Error('Invalid action'));
   };
 
   private _requestCode(): Observable<any> {
@@ -86,7 +97,8 @@ export class PasswordResetComponent implements OnInit {
       .pipe(
         tap(() => {
           this.titleChange.emit('Let\'s verify it\'s you');
-          this.subtitleChange.emit(`An email with a verification code has been sent to ${this.email} to verify it's you.`);
+          this.subtitleChange 
+            .emit(`An email with a verification code has been sent to ${this.email} to verify it's you.`);
           this.mode = 'code';
           this._cdRef.markForCheck();
         }),
