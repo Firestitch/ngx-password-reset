@@ -11,9 +11,9 @@ export class FsForcePasswordChange {
   private _cookie = inject(FsCookie);
   private _router = inject(Router);
 
-  public enforcePasswordChange(): UrlTree | null {
+  public enforcePasswordChange(redirectUrl: string): UrlTree | null {
     if (this.requiresPasswordChange) {
-      return this._router.createUrlTree(['/password/change']);
+      return this._router.createUrlTree(['/password/change'], { queryParams: { redirect: redirectUrl } });
     }
 
     return null;

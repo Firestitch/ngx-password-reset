@@ -1,21 +1,24 @@
 import { inject, Injectable } from '@angular/core';
 import {
-  CanActivate, Router,
+  ActivatedRouteSnapshot,
+  CanActivate,
+  RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
 
 import { FsForcePasswordChange } from '../services';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class FsForcePasswordChangeGuard implements CanActivate {
 
-  private _router = inject(Router);
   private _forcePassword = inject(FsForcePasswordChange);
 
-  public canActivate(): boolean | UrlTree {
+  public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree {
     if (this._forcePassword.requiresPasswordChange) {
-      return this._router.createUrlTree(['/']);
+      return this._forcePassword.enforcePasswordChange(state.url);
     }
 
     return true;
