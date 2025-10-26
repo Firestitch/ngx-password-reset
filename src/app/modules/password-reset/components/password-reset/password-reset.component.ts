@@ -3,20 +3,43 @@ import {
   Component, EventEmitter, Input, OnInit, Output,
   ViewChild,
 } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { UntypedFormControl, FormsModule } from '@angular/forms';
 
-import { FsFormDirective } from '@firestitch/form';
+import { FsFormDirective, FsFormModule } from '@firestitch/form';
 import { FsMessage } from '@firestitch/message';
 
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { FsCommonModule } from '@firestitch/common';
+import { StackedButtonsComponent } from '../stacked-buttons/stacked-buttons.component';
+import { MatButton } from '@angular/material/button';
+import { FsLabelModule } from '@firestitch/label';
+import { FsCodeInputModule } from '@firestitch/code-input';
+import { FsPasswordModule } from '@firestitch/password';
 
 
 @Component({
-  selector: 'fs-password-reset',
-  templateUrl: './password-reset.component.html',
-  styleUrls: ['./password-reset.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'fs-password-reset',
+    templateUrl: './password-reset.component.html',
+    styleUrls: ['./password-reset.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        FormsModule,
+        FsFormModule,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        FsCommonModule,
+        StackedButtonsComponent,
+        MatButton,
+        FsLabelModule,
+        FsCodeInputModule,
+        MatError,
+        FsPasswordModule,
+    ],
 })
 export class PasswordResetComponent implements OnInit {
 

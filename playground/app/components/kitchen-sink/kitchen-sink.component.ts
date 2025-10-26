@@ -1,13 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
+import { PasswordResetComponent } from '../../../../src/app/modules/password-reset/components/password-reset/password-reset.component';
 
 
 @Component({
-  selector: 'kitchen-sink',
-  templateUrl: './kitchen-sink.component.html',
-  styleUrls: ['./kitchen-sink.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'kitchen-sink',
+    templateUrl: './kitchen-sink.component.html',
+    styleUrls: ['./kitchen-sink.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [PasswordResetComponent],
 })
 export class KitchenSinkComponent {
 

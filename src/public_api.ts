@@ -1,4 +1,4 @@
-export { FsPasswordResetModule } from './app/modules/password-reset/fs-password-reset.module';
+
 
 export { ForcePasswordChangeComponent } from './app/modules/force-password-change/components';
 export { FsForcePasswordChangeModule } from './app/modules/force-password-change/fs-force-password-change.module';
