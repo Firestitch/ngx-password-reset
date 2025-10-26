@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy, ChangeDetectorRef,
-  Component, EventEmitter, Input, OnInit, Output,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewChild, inject } from '@angular/core';
 import { UntypedFormControl, FormsModule } from '@angular/forms';
 
 import { FsFormDirective, FsFormModule } from '@firestitch/form';
@@ -42,6 +38,9 @@ import { FsPasswordModule } from '@firestitch/password';
     ],
 })
 export class PasswordResetComponent implements OnInit {
+  private _message = inject(FsMessage);
+  private _cdRef = inject(ChangeDetectorRef);
+
 
   @ViewChild(FsFormDirective)
   public form: FsFormDirective;
@@ -60,11 +59,6 @@ export class PasswordResetComponent implements OnInit {
   public confirmPassword: string = null;
   public code: string = null;
   public mode: 'request' | 'password' | 'code' = 'request';
-
-  constructor(
-    private _message: FsMessage,
-    private _cdRef: ChangeDetectorRef,
-  ) { }
 
   public ngOnInit(): void {
     this.titleChange.emit('Reset your password');
