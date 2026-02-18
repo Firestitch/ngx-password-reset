@@ -15,21 +15,21 @@ import { FsForcePasswordChangeRoutingModule } from './fs-force-password-change-r
 
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        MatCardModule,
-        MatInputModule,
-        MatButtonModule,
-        FsFormModule,
-        FsPasswordModule,
-        FsCommonModule,
-        FsForcePasswordChangeRoutingModule,
-        ForcePasswordChangeComponent,
-    ],
-    exports: [
-        ForcePasswordChangeComponent,
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    FsFormModule,
+    FsPasswordModule,
+    FsCommonModule,
+    FsForcePasswordChangeRoutingModule,
+    ForcePasswordChangeComponent,
+  ],
+  exports: [
+    ForcePasswordChangeComponent,
+  ],
 })
 export class FsForcePasswordChangeModule {
 }

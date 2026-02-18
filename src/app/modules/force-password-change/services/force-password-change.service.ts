@@ -8,15 +8,23 @@ import { FsCookie } from '@firestitch/cookie';
 })
 export class FsForcePasswordChange {
 
+  private readonly _passwordChangePath = '/password/change';
   private _cookie = inject(FsCookie);
   private _router = inject(Router);
 
   public enforcePasswordChange(redirectUrl: string): UrlTree | null {
-    if (this.requiresPasswordChange) {
-      return this._router.createUrlTree(['/password/change'], { queryParams: { redirect: redirectUrl } });
+    if (!this.requiresPasswordChange) {
+      return null;
     }
+    const pathname = new URL(redirectUrl, 'http://x').pathname;
+    const isRedirectToSelf =
+      pathname.startsWith(this._passwordChangePath);
+    const redirect = isRedirectToSelf ? '/' : redirectUrl;
 
-    return null;
+    return this._router.createUrlTree(
+      [this._passwordChangePath],
+      { queryParams: { redirect } },
+    );
   }
 
   public get requiresPasswordChange() {
