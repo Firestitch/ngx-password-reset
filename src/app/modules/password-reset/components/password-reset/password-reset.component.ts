@@ -6,12 +6,11 @@ import { FsMessage } from '@firestitch/message';
 
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { FsCommonModule } from '@firestitch/common';
 import { StackedButtonsComponent } from '../stacked-buttons/stacked-buttons.component';
 import { MatButton } from '@angular/material/button';
-import { FsLabelModule } from '@firestitch/label';
 import { FsCodeInputModule } from '@firestitch/code-input';
 import { FsPasswordModule } from '@firestitch/password';
 
@@ -31,9 +30,7 @@ import { FsPasswordModule } from '@firestitch/password';
         FsCommonModule,
         StackedButtonsComponent,
         MatButton,
-        FsLabelModule,
         FsCodeInputModule,
-        MatError,
         FsPasswordModule,
     ],
 })
